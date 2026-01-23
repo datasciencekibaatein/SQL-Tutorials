@@ -515,67 +515,7 @@ VALUES (
 ```
 
 ---
-
-## 5. SQL Constraints
-
-Constraints are rules applied to columns to **ensure data accuracy, consistency, and reliability**. If data violates a constraint, MySQL rejects the operation.
-
----
-
-### 5.1 Common MySQL Constraints
-
-| Constraint  | Purpose                    |
-| ----------- | -------------------------- |
-| NOT NULL    | Prevents NULL values       |
-| UNIQUE      | Prevents duplicate values  |
-| PRIMARY KEY | Uniquely identifies rows   |
-| FOREIGN KEY | Maintains relationships    |
-| CHECK       | Enforces custom conditions |
-| DEFAULT     | Assigns default value      |
-
----
-
-### 5.2 Practical Example: Members Table
-
-```sql
-CREATE TABLE Members (
-    member_id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(50) NOT NULL,
-    email VARCHAR(100) UNIQUE,
-    age INT CHECK (age >= 13),
-    membership_type VARCHAR(20) DEFAULT 'Standard',
-    join_date DATE NOT NULL
-);
-```
-
----
-
-### 5.3 Constraint Validation Examples
-
-✔ Valid Insert:
-
-```sql
-INSERT INTO Members (first_name, email, age, join_date)
-VALUES ('Alice', 'alice@email.com', 25, '2026-01-16');
-```
-
-❌ CHECK Constraint Failure:
-
-```sql
-INSERT INTO Members (first_name, email, age, join_date)
-VALUES ('Bob', 'bob@email.com', 10, '2026-01-16');
-```
-
-❌ UNIQUE Constraint Failure:
-
-```sql
-INSERT INTO Members (first_name, email, age, join_date)
-VALUES ('Charlie', 'alice@email.com', 30, '2026-01-16');
-```
-
----
-
-## 6. DML (Data Manipulation Language)
+## 5. DML (Data Manipulation Language)
 
 DML is used to **insert, update, delete, and retrieve data** inside tables created using DDL.
 
@@ -669,6 +609,66 @@ SET SQL_SAFE_UPDATES = 1;
 ```
 
 ---
+
+## 6. SQL Constraints
+
+Constraints are rules applied to columns to **ensure data accuracy, consistency, and reliability**. If data violates a constraint, MySQL rejects the operation.
+
+---
+
+### 5.1 Common MySQL Constraints
+
+| Constraint  | Purpose                    |
+| ----------- | -------------------------- |
+| NOT NULL    | Prevents NULL values       |
+| UNIQUE      | Prevents duplicate values  |
+| PRIMARY KEY | Uniquely identifies rows   |
+| FOREIGN KEY | Maintains relationships    |
+| CHECK       | Enforces custom conditions |
+| DEFAULT     | Assigns default value      |
+
+---
+
+### 5.2 Practical Example: Members Table
+
+```sql
+CREATE TABLE Members (
+    member_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    age INT CHECK (age >= 13),
+    membership_type VARCHAR(20) DEFAULT 'Standard',
+    join_date DATE NOT NULL
+);
+```
+
+---
+
+### 5.3 Constraint Validation Examples
+
+✔ Valid Insert:
+
+```sql
+INSERT INTO Members (first_name, email, age, join_date)
+VALUES ('Alice', 'alice@email.com', 25, '2026-01-16');
+```
+
+❌ CHECK Constraint Failure:
+
+```sql
+INSERT INTO Members (first_name, email, age, join_date)
+VALUES ('Bob', 'bob@email.com', 10, '2026-01-16');
+```
+
+❌ UNIQUE Constraint Failure:
+
+```sql
+INSERT INTO Members (first_name, email, age, join_date)
+VALUES ('Charlie', 'alice@email.com', 30, '2026-01-16');
+```
+
+---
+
 
 ### 6.6 DDL vs DML Comparison
 
